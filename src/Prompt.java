@@ -1,5 +1,3 @@
-package org.lessons.java.shop;
-
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -12,7 +10,13 @@ public class Prompt {
 
     public String ask(String prompt) {
         System.out.print(prompt);
-        return this.scanner.next();
+        while (!scanner.hasNextLine()) {
+            scanner.next();
+            System.out.print("Invalid value, ");
+            System.out.print(prompt);
+        }
+        String toReturn = this.scanner.nextLine();
+        return toReturn;
     }
     public BigDecimal askBigDecimal(String prompt) {
         System.out.print(prompt);
@@ -21,7 +25,10 @@ public class Prompt {
             System.out.print("Invalid value, ");
             System.out.print(prompt);
         }
-        return this.scanner.nextBigDecimal();
+
+        BigDecimal toReturn = this.scanner.nextBigDecimal();
+        this.scanner.next();
+        return toReturn;
     }
     public double askDouble(String prompt) {
         System.out.print(prompt);
@@ -30,7 +37,9 @@ public class Prompt {
             System.out.print("Invalid value, ");
             System.out.print(prompt);
         }
-        return this.scanner.nextDouble();
+        double toReturn = this.scanner.nextDouble();
+        this.scanner.next();
+        return toReturn;
     }
     public float askFloat(String prompt) {
         System.out.print(prompt);
@@ -49,7 +58,21 @@ public class Prompt {
             System.out.print("Invalid value, ");
             System.out.print(prompt);
         }
-        return this.scanner.nextInt();
+        int toReturn = this.scanner.nextInt();
+        this.scanner.next();
+        return toReturn;
+    }
+
+    public boolean askBool(String prompt) {
+        System.out.print(prompt);
+        while (!scanner.hasNextBoolean()) {
+            scanner.next();
+            System.out.print("Invalid value, ");
+            System.out.print(prompt);
+        }
+        boolean toReturn = this.scanner.nextBoolean();
+        this.scanner.next();
+        return toReturn;
     }
 
 

@@ -1,18 +1,18 @@
 import java.math.BigDecimal;
 
-public class Smartphone extends Product{
-    int IMEI;
-    int memorySize;
-    BigDecimal discount = new BigDecimal(7);
+public class TV extends Product{
+    int inches;
+    boolean smart;
+    BigDecimal discount = new BigDecimal(10);
 
-    public Smartphone(String name, String brand, BigDecimal price, BigDecimal vat, int IMEI, int memorySize) {
+    public TV(String name, String brand, BigDecimal price, BigDecimal vat, int inches, boolean smart) {
         super(name, brand, price, vat);
-        this.IMEI = IMEI;
-        this.memorySize = memorySize;
+        this.inches = inches;
+        this.smart = smart;
     }
 
     @Override
     public BigDecimal getDiscount() {
-        return memorySize <= 32 ? new BigDecimal(7) : super.getDiscount();
+        return smart ? discount : super.getDiscount();
     }
 }
